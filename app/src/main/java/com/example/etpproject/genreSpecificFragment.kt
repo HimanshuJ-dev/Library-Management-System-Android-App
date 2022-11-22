@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,8 @@ import com.example.etpproject.bookdatabasepackage.BooksDatabase
 class genreSpecificFragment : Fragment() {
 
     lateinit var database: BooksDatabase
+
+    private lateinit var adapter1: genreSpecificAdapter
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -42,10 +45,24 @@ class genreSpecificFragment : Fragment() {
 
         val genrebooks = genrespename?.let { database.booksDao().readgenrebooks(it) }
 
-        genreSpecificRecyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = genrebooks?.let { genreSpecificAdapter(it) }
-        }
+        val layoutManager = LinearLayoutManager(requireContext())
+        genreSpecificRecyclerView.layoutManager = layoutManager
+        adapter1 = genrebooks?.let { genreSpecificAdapter(it) }!!
+        genreSpecificRecyclerView.adapter = adapter1
+
+        adapter1.setOnItemClickListener(object : genreSpecificAdapter.onBookItemClickListener{
+            override fun onItemClick(position: Int){
+
+                val bookname = genrebooks?.get(position)?.BookName
+
+                findNavController().navigate(R.id.action_genreSpecificFragment_to_bookDetailsFragment, Bundle().apply {
+                    putString("bookname", "$bookname")
+                    putString("fromname", "genre")
+                })
+            }
+
+
+        })
 
         backbtn.setOnClickListener {
             findNavController().navigate(R.id.action_genreSpecificFragment_to_genreFragment)

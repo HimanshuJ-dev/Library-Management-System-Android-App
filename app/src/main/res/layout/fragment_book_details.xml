@@ -3,7 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookDetailsFragment">
+    tools:context=".BookDetailsFragment"
+    android:background="#c9d2ff">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,6 +16,7 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/detailsbackbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Back"
@@ -135,5 +141,7 @@
             tools:listitem="@layout/demolistviewlayout"/>
 
     </LinearLayout>
+
+    </ScrollView>
 
 </FrameLayout>

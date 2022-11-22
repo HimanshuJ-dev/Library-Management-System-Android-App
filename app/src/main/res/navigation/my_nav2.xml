@@ -37,5 +37,14 @@
         <action
             android:id="@+id/action_bookDetailsFragment_to_genreSpecificFragment"
             app:destination="@id/genreSpecificFragment" />
+        <argument
+            android:name="bookname"
+            app:argType="string" />
+        <argument
+            android:name="fromname"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_bookDetailsFragment_self"
+            app:destination="@id/bookDetailsFragment" />
     </fragment>
 </navigation>

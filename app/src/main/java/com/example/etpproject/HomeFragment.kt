@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
@@ -16,6 +17,11 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 class HomeFragment : Fragment() {
 
     lateinit var database: BooksDatabase
+
+    private lateinit var adapter1: newAdapterforbooks
+    private lateinit var adapter2: newAdapterforbooks
+    private lateinit var adapter3: newAdapterforbooks
+    private lateinit var adapter4: newAdapterforbooks
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -36,29 +42,85 @@ class HomeFragment : Fragment() {
         val amazingmorebtn = view.findViewById<Button>(R.id.amazingmore)
         val recommendedmorebtn = view.findViewById<Button>(R.id.recommendedmore)
 
-        recyclerViewfeatured.apply {
-            val categorybooks = database.booksDao().readcategorybooks("Featured")
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = newAdapterforbooks(categorybooks)
-        }
+        val categoryfeaturedbooks = database.booksDao().readcategorybooks("Featured")
+        val categorytopbooks = database.booksDao().readcategorybooks("Top Selling")
+        val categoryamazingbooks = database.booksDao().readcategorybooks("Amazing Reads")
+        val categoryrecommendedbooks = database.booksDao().readcategorybooks("Recommended")
 
-        recyclerViewTopSeller.apply {
-            val categorybooks = database.booksDao().readcategorybooks("Top Selling")
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = newAdapterforbooks(categorybooks)
-        }
 
-        recyclerViewAmazingReads.apply {
-            val categorybooks = database.booksDao().readcategorybooks("Amazing Reads")
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = newAdapterforbooks(categorybooks)
-        }
 
-        recyclerViewRecommended.apply {
-            val categorybooks = database.booksDao().readcategorybooks("Recommended")
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = newAdapterforbooks(categorybooks)
-        }
+        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewfeatured.layoutManager = layoutManager
+        adapter1 = categoryfeaturedbooks?.let { newAdapterforbooks(it) }!!
+        recyclerViewfeatured.adapter = adapter1
+
+        val layoutManager1 = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewTopSeller.layoutManager = layoutManager1
+        adapter2 = categorytopbooks?.let { newAdapterforbooks(it) }!!
+        recyclerViewTopSeller.adapter = adapter2
+
+        val layoutManager2 = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewAmazingReads.layoutManager = layoutManager2
+        adapter3 = categoryamazingbooks?.let { newAdapterforbooks(it) }!!
+        recyclerViewAmazingReads.adapter = adapter3
+
+        val layoutManager3 = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewRecommended.layoutManager = layoutManager3
+        adapter4 = categoryrecommendedbooks?.let { newAdapterforbooks(it) }!!
+        recyclerViewRecommended.adapter = adapter4
+
+        adapter1.setOnItemClickListener(object : newAdapterforbooks.onBookItemClickListener{
+            override fun onItemClick(position: Int){
+
+                val bookname = categoryfeaturedbooks?.get(position)?.BookName
+
+                findNavController().navigate(R.id.action_homeFragment_to_bookDetailsFragment2, Bundle().apply {
+                    putString("bookname", "$bookname")
+                    putString("fromname", "Home")
+                })
+            }
+
+
+        })
+        adapter2.setOnItemClickListener(object : newAdapterforbooks.onBookItemClickListener{
+            override fun onItemClick(position: Int){
+
+                val bookname = categorytopbooks?.get(position)?.BookName
+
+                findNavController().navigate(R.id.action_homeFragment_to_bookDetailsFragment2, Bundle().apply {
+                    putString("bookname", "$bookname")
+                    putString("fromname", "Home")
+                })
+            }
+
+
+        })
+        adapter3.setOnItemClickListener(object : newAdapterforbooks.onBookItemClickListener{
+            override fun onItemClick(position: Int){
+
+                val bookname = categoryamazingbooks?.get(position)?.BookName
+
+                findNavController().navigate(R.id.action_homeFragment_to_bookDetailsFragment2, Bundle().apply {
+                    putString("bookname", "$bookname")
+                    putString("fromname", "Home")
+                })
+            }
+
+
+        })
+        adapter4.setOnItemClickListener(object : newAdapterforbooks.onBookItemClickListener{
+            override fun onItemClick(position: Int){
+
+                val bookname = categoryrecommendedbooks?.get(position)?.BookName
+
+                findNavController().navigate(R.id.action_homeFragment_to_bookDetailsFragment2, Bundle().apply {
+                    putString("bookname", "$bookname")
+                    putString("fromname", "Home")
+                })
+            }
+
+
+        })
 
         featuremorebtn.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_categorySpecificFragment, Bundle().apply {

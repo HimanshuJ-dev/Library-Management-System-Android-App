@@ -37,8 +37,6 @@ class GenreFragment : Fragment() {
         adapter = GenreListAdapter(genreArrayList)
         recyclerView.adapter = adapter
 
-        fragcomm = activity as fragcomm
-
         adapter.setOnItemClickListener(object : GenreListAdapter.onGenreItemClickListener{
             override fun onItemClick(position: Int){
 

@@ -1,11 +1,11 @@
 package com.example.etpproject.bookdatabasepackage
 
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.etpproject.userLoginAndSignUp.User
 import java.util.Locale.Category
 
 
@@ -29,4 +29,7 @@ interface BooksDao {
 
     @Query("SELECT * from books WHERE WriterName like :author")
     fun readwriterbooks(author: String): List<Books>
+
+    @Query("SELECT * from books WHERE BookName like :bookname")
+    fun getbookfromname(bookname: String): List<Books>
 }

@@ -18,7 +18,7 @@ class categorySpecificFragment : Fragment() {
 
     lateinit var database: BooksDatabase
 
-    lateinit var adapter1: genreSpecificAdapter
+    private lateinit var adapter1: genreSpecificAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,19 +41,20 @@ class categorySpecificFragment : Fragment() {
 
         val genrebooks = catspename?.let { database.booksDao().readcategorybooks(it) }
 
-        genreSpecificRecyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = genrebooks?.let { genreSpecificAdapter(it) }
-        }
-
+        val layoutManager = LinearLayoutManager(requireContext())
+        genreSpecificRecyclerView.layoutManager = layoutManager
         adapter1 = genrebooks?.let { genreSpecificAdapter(it) }!!
+        genreSpecificRecyclerView.adapter = adapter1
 
-        adapter1.setOnItemClickListener(object : genreSpecificAdapter.onGenreItemClickListener{
+        adapter1.setOnItemClickListener(object : genreSpecificAdapter.onBookItemClickListener{
             override fun onItemClick(position: Int){
 
-                //val bookid = genrebooks?.get(position)?.bookid
+                val bookname = genrebooks?.get(position)?.BookName
 
-                findNavController().navigate(R.id.action_categorySpecificFragment_to_bookDetailsFragment2)
+                findNavController().navigate(R.id.action_categorySpecificFragment_to_bookDetailsFragment2, Bundle().apply {
+                    putString("bookname", "$bookname")
+                    putString("fromname", "category")
+                })
             }
 
 

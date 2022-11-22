@@ -1,5 +1,6 @@
 package com.example.etpproject
 
+import android.annotation.SuppressLint
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
@@ -11,25 +12,20 @@ import com.example.etpproject.bookdatabasepackage.Books
 import kotlinx.android.synthetic.main.genrespecificrow.view.*
 
 class genreSpecificAdapter(private val allBooks: List<Books>): RecyclerView.Adapter<genreSpecificAdapter.ViewHolder>() {
-    private lateinit var mListener: onGenreItemClickListener
-    interface onGenreItemClickListener{
+    private var mListener: onBookItemClickListener? = null
+
+    interface onBookItemClickListener{
         fun onItemClick(position: Int)
 
     }
-    fun setOnItemClickListener(listener: onGenreItemClickListener){
+    fun setOnItemClickListener(listener: onBookItemClickListener){
         mListener = listener
 
     }
 
-    class ViewHolder(val view: View, listener: onGenreItemClickListener): RecyclerView.ViewHolder(view){
-        init{
-            view.setOnClickListener {
-                listener.onItemClick(adapterPosition)
-            }
 
-        }
-    }
 
+    @SuppressLint("ResourceType")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.genrespecificrow,parent,false)
         return ViewHolder(view, mListener)
@@ -38,16 +34,35 @@ class genreSpecificAdapter(private val allBooks: List<Books>): RecyclerView.Adap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val img =allBooks[position].BookImage
 
-        holder.view.findViewById<TextView>(R.id.genrebooknametv).text = allBooks[position].BookName
-        holder.view.findViewById<TextView>(R.id.genrewriternametv).text = allBooks[position].WriterName
+        holder.bookName.text = allBooks[position].BookName
+        holder.bookAuthor.text = allBooks[position].WriterName
         val rating = allBooks[position].BookRating.toString()
-        holder.view.findViewById<TextView>(R.id.genreratingtv).text = "Ratings: $rating/5"
+        holder.bookRating.text = "Ratings: $rating/5"
         if (img != null) {
-            holder.view.findViewById<ImageView>(R.id.genrespecificiv).setImageBitmap(BitmapFactory.decodeByteArray(img, 0, img.size))
+            holder.bookImage.setImageBitmap(BitmapFactory.decodeByteArray(img, 0, img.size))
         }
 
     }
 
-    override fun getItemCount() = allBooks.size
+    override fun getItemCount(): Int {
+        return allBooks.size
+    }
+
+    class ViewHolder(view: View, listener: onBookItemClickListener?): RecyclerView.ViewHolder(view){
+
+        val bookName : TextView = view.genrebooknametv
+        val bookAuthor : TextView = view.genrewriternametv
+        val bookRating : TextView = view.genreratingtv
+        val bookImage: ImageView = view.genrespecificiv
+
+        init{
+            view.setOnClickListener {
+                if (listener != null) {
+                    listener.onItemClick(adapterPosition)
+                }
+            }
+
+        }
+    }
 
 }
