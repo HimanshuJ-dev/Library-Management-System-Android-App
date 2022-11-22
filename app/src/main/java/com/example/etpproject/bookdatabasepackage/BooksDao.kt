@@ -26,4 +26,7 @@ interface BooksDao {
 
     @Query("SELECT * from books WHERE BookGenre like :genre")
     fun readgenrebooks(genre: String): List<Books>
+
+    @Query("SELECT * from books WHERE WriterName like :author")
+    fun readwriterbooks(author: String): List<Books>
 }

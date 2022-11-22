@@ -20,7 +20,7 @@ class HomeActivity : AppCompatActivity(), fragcomm {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        replaceFragment(HomeFragment())
+        replaceFragment(HomeLayouterFragment())
 
         binding.bottomNavigationViewHomeActivity.setOnItemSelectedListener {
 
