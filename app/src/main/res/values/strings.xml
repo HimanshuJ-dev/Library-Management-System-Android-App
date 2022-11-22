@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">ETPproject</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="artsent">Arts and Entertainment</string>
+    <string name="biographies">Biographies and Memoirs</string>
+    <string name="business">Business and Investing</string>
+    <string name="children">Children\'s Books</string>
+    <string name="comics">Comics</string>
+    <string name="computers">Computers and Technology</string>
+    <string name="cookery">Cookery, Food and Wine</string>
+    <string name="engineering">Engineering</string>
+    <string name="fiction">Fiction and Literature</string>
+    <string name="foreign">Foreign Languages and Study Aids</string>
+    <string name="health">Health, Mind and Body</string>
+    <string name="history">History</string>
+    <string name="religion">Religion and Spirituality</string>
+    <string name="romance">Romance</string>
+    <string name="selfHelp">Self-Help</string>
+
+</resources>

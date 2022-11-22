@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="7dp"
+    android:layout_margin="7dp"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="140dp"
+        android:layout_height="260dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/bookimageviewdemo"
+            android:layout_width="130dp"
+            android:layout_height="180dp"
+            android:layout_margin="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/booknametv"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:text="Book Name"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="7dp"/>
+
+            <TextView
+                android:id="@+id/bookauthortv"
+                android:layout_width="match_parent"
+                android:layout_height="14dp"
+                android:text="Book Name"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:layout_margin="7dp"/>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
