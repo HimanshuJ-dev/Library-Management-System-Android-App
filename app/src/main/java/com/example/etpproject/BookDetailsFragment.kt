@@ -70,7 +70,7 @@ class BookDetailsFragment : Fragment() {
         bookwriterdetails.text = bookdetails?.get(0)?.WriterName
         bookpublisherdetails.text = bookdetails?.get(0)?.BookPublisher
         val ratingsdetails = bookdetails?.get(0)?.BookRating.toString()
-        bookratingdetails.text = "$ratingsdetails / 5"
+        bookratingdetails.text = "$ratingsdetails/5"
         val pagesdetails = bookdetails?.get(0)?.BookPagesCount.toString()
         bookpagesdetails.text = "$pagesdetails Pages"
         bookaboutdetails.text = bookdetails?.get(0)?.BookAbout

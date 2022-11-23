@@ -4,14 +4,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.room.Room
-import com.example.etpproject.bookdatabasepackage.Books
-import com.example.etpproject.bookdatabasepackage.BooksDatabase
 import com.example.etpproject.databinding.ActivityHomeBinding
 import com.example.etpproject.userLoginAndSignUp.UserDatabase
+import kotlinx.android.synthetic.main.fragment_profile.*
 
-class HomeActivity : AppCompatActivity(), fragcomm {
+var globalusername = ""
+var globalfullname = ""
+
+class HomeActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityHomeBinding
+
+    lateinit var database1: UserDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -21,6 +25,17 @@ class HomeActivity : AppCompatActivity(), fragcomm {
         setContentView(binding.root)
 
         replaceFragment(HomeLayouterFragment())
+
+        val usernametext = intent.getStringExtra("username")
+
+        database1 = Room.databaseBuilder(this, UserDatabase::class.java, "user_database").allowMainThreadQueries().build()
+
+        val fullname = database1.userDao().getfullname(usernametext)
+
+        if (usernametext != null) {
+            globalusername = usernametext
+        }
+        globalfullname = fullname
 
         binding.bottomNavigationViewHomeActivity.setOnItemSelectedListener {
 
@@ -48,18 +63,6 @@ class HomeActivity : AppCompatActivity(), fragcomm {
         fragmentTransaction.replace(R.id.frameLayoutHomeActivity, fragment)
         fragmentTransaction.commit()
 
-    }
-
-    override fun passDataCom(name: String) {
-        val bundle = Bundle()
-        bundle.putString("name", name)
-
-        val transaction = this.supportFragmentManager.beginTransaction()
-        val fraggenrespe = genreSpecificFragment()
-        fraggenrespe.arguments = bundle
-
-        transaction.replace(R.id.frameLayoutHomeActivity, fraggenrespe)
-        transaction.commit()
     }
 }
 

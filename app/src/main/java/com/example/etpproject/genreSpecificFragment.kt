@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
@@ -35,7 +36,7 @@ class genreSpecificFragment : Fragment() {
 
         val genreSpecificRecyclerView = view.findViewById<RecyclerView>(R.id.genrespecificrecyclerview)
 
-        val backbtn = view.findViewById<Button>(R.id.genrespecificbackbutton)
+        val backbtn = view.findViewById<ImageButton>(R.id.genrespecificbackbutton)
 
         val titletv = view.findViewById<TextView>(R.id.genrespecifictitletv)
 

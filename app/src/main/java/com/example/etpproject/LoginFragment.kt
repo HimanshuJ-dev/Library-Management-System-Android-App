@@ -39,12 +39,15 @@ class LoginFragment : Fragment() {
         val password = view.findViewById<EditText>(R.id.loginscrnpassedittext)
         var passwordfromdb = ""
 
+
         view.loginbtnloginscreen.setOnClickListener {
             passwordfromdb = database.userDao().checkpassword(username.text.toString())
+            val usrtext = username.text.toString()
             if(password.text.toString() == passwordfromdb){
                 //login user
                 Toast.makeText(requireContext(), "Login Successful!", Toast.LENGTH_LONG).show()
                 val intent = Intent(requireContext(), HomeActivity::class.java)
+                intent.putExtra("username", "$usrtext")
                 startActivity(intent)
             }else{
                 Toast.makeText(requireContext(), "Wrong Credentials!", Toast.LENGTH_LONG).show()

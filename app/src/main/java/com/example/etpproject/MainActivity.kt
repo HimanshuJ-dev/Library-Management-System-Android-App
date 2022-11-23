@@ -94,34 +94,48 @@ class MainActivity : AppCompatActivity() {
         books = Books(6, "Harry Potter and the Deathly Hallows","J. K. Rowling", fiction,
             680, 4.8f, "Bloomsbury", "Final Book in Harry Potter series", hp7img, topSelling)
         database.booksDao().addBook(books)
-//
-//        books = Books(7, "Deadpool Kills Deadpool","Cullen Bunn", comics,
-//            96, 3.9f, "Marvel Entertainment", "The final act of the Deadpool Killogy begins!")
-//        database.booksDao().addBook(books)
-//
-//        books = Books(8, "The Power of Your Subconscious Mind","Joseph Murphy", health,
-//            280, 4.3f, "General Press", "Dr Joseph Murphy explains that life events are actually the result of the workings of your conscious and subconscious mind.")
-//        database.booksDao().addBook(books)
-//
-//        books = Books(9, "Love Will Find a Way","Anurag Garg", romance,
-//            232, 3.8f, "Penguin Random House", "A story about Madhav and his love life")
-//        database.booksDao().addBook(books)
-//
-//        books = Books(10, "Your Invisible Power","Genevieve behrend", selfHelp,
-//            160, 3.5f, "General Press", "Genevieve Behrend will guide you through the use of visualization")
-//        database.booksDao().addBook(books)
-//
-//        books = Books(11, "The Art of War","Sun Tzu", history,
-//            128, 4.1f, "General Press", "The art of war is a translation of Sun Tzu's originally written book on battle strategies by author James Clavell")
-//        database.booksDao().addBook(books)
-//
-//        books = Books(12, "The Devil's Double","Latif Yahia", arts,
-//            330, 3.8f, "Arcanum Media Group", "Latif Yahia was taken to Saddam's headquaters to meet Uday...")
-//        database.booksDao().addBook(books)
-//
-//        books = Books(13, "Kashmiri Cooking","P Krishna Dar", cookery,
-//            208, 4.7f, "Penguin UK", "Krishna Prasad Dar's collection of over a hundred Kashmiri recipes became a classic in its time.")
-//        database.booksDao().addBook(books)
+
+        val dkd = getDrawable(R.drawable.dkd)
+        val dkdimg = dkd?.let { imgconvrt(it) }
+        books = Books(7, "Deadpool Kills Deadpool","Cullen Bunn", comics,
+            96, 3.9f, "Marvel Entertainment", "The final act of the Deadpool Killogy begins!", dkdimg, amazing)
+        database.booksDao().addBook(books)
+
+        val subm = getDrawable(R.drawable.submind)
+        val submimg = subm?.let { imgconvrt(it) }
+        books = Books(8, "The Power of Your Subconscious Mind","Joseph Murphy", health,
+            280, 4.3f, "General Press", "Dr Joseph Murphy explains that life events are actually the result of the workings of your conscious and subconscious mind.", submimg, recommended)
+        database.booksDao().addBook(books)
+
+        val lw = getDrawable(R.drawable.loveway)
+        val lwimg = lw?.let { imgconvrt(it) }
+        books = Books(9, "Love Will Find a Way","Anurag Garg", romance,
+            232, 3.8f, "Penguin Random House", "A story about Madhav and his love life", lwimg, featured)
+        database.booksDao().addBook(books)
+
+        val invip = getDrawable(R.drawable.invisiblepower)
+        val invipimg = invip?.let { imgconvrt(it) }
+        books = Books(10, "Your Invisible Power","Genevieve behrend", selfHelp,
+            160, 3.5f, "General Press", "Genevieve Behrend will guide you through the use of visualization", invipimg, topSelling)
+        database.booksDao().addBook(books)
+
+        val aow = getDrawable(R.drawable.artwar)
+        val aowimg = aow?.let { imgconvrt(it) }
+        books = Books(11, "The Art of War","Sun Tzu", history,
+            128, 4.1f, "General Press", "The art of war is a translation of Sun Tzu's originally written book on battle strategies by author James Clavell", aowimg, recommended)
+        database.booksDao().addBook(books)
+
+        val tdd = getDrawable(R.drawable.devilsd)
+        val tddimg = tdd?.let { imgconvrt(it) }
+        books = Books(12, "The Devil's Double","Latif Yahia", arts,
+            330, 3.8f, "Arcanum Media Group", "Latif Yahia was taken to Saddam's headquaters to meet Uday...", tddimg, featured)
+        database.booksDao().addBook(books)
+
+        val kc = getDrawable(R.drawable.kasmiric)
+        val kcimg = kc?.let { imgconvrt(it) }
+        books = Books(13, "Kashmiri Cooking","P Krishna Dar", cookery,
+            208, 4.7f, "Penguin UK", "Krishna Prasad Dar's collection of over a hundred Kashmiri recipes became a classic in its time.", kcimg, amazing)
+        database.booksDao().addBook(books)
     }
 
 }

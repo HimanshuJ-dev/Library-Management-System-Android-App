@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,10 +38,10 @@ class HomeFragment : Fragment() {
         val recyclerViewAmazingReads = view.recycler_viewHomeAmazingReads
         val recyclerViewRecommended = view.recycler_viewHomeRecommended
 
-        val featuremorebtn = view.findViewById<Button>(R.id.featuremore)
-        val topsellermorebtn = view.findViewById<Button>(R.id.topsellermore)
-        val amazingmorebtn = view.findViewById<Button>(R.id.amazingmore)
-        val recommendedmorebtn = view.findViewById<Button>(R.id.recommendedmore)
+        val featuremorebtn = view.findViewById<ImageButton>(R.id.featuremore)
+        val topsellermorebtn = view.findViewById<ImageButton>(R.id.topsellermore)
+        val amazingmorebtn = view.findViewById<ImageButton>(R.id.amazingmore)
+        val recommendedmorebtn = view.findViewById<ImageButton>(R.id.recommendedmore)
 
         val categoryfeaturedbooks = database.booksDao().readcategorybooks("Featured")
         val categorytopbooks = database.booksDao().readcategorybooks("Top Selling")

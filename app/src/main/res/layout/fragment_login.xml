@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".LoginFragment"
     android:orientation="vertical"
-    android:background="@drawable/book3">
+    android:background="#11995e">
 
 
 
@@ -15,12 +15,14 @@
         android:id="@+id/loginscreentitletv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="20dp"
         android:text="LIBRARY MANAGEMENT SYSTEM"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="#ffbb00"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -90,7 +92,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
-        android:id="@+id/loginbtnloginscreen"/>
+        android:id="@+id/loginbtnloginscreen"
+        android:background="@drawable/customloginbtn"/>
 
     <Button
         android:layout_width="match_parent"
@@ -103,7 +106,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="32dp"
-        android:id="@+id/signupbtnloginscreen"/>
+        android:id="@+id/signupbtnloginscreen"
+        android:background="@drawable/customloginbtn"/>
 
         </LinearLayout>
 

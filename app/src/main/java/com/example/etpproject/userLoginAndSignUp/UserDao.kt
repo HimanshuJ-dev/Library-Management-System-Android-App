@@ -21,4 +21,7 @@ interface UserDao {
 
     @Query("SELECT COUNT() from user_table WHERE userName like :username")
     fun existingusername(username: String): Int
+
+    @Query("SELECT userFullName from user_table WHERE userName like :username")
+    fun getfullname(username: String?): String
 }

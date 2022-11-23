@@ -27,16 +27,18 @@
                     android:textStyle="bold"
                     android:textSize="24sp"
                     android:text="Featured books"
+                    android:textColor="@color/black"
                     android:layout_margin="7dp"/>
 
-                        <Button
+                        <ImageButton
                             android:id="@+id/featuremore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
                             android:layout_marginEnd="10dp"
                             android:layout_margin="7dp"
-                            android:text="see more"
+                            android:src="@drawable/ic_baseline_arrow_forward_24"
                             android:gravity="right"
+                            android:background="#ffffff"
                             />
 
                 </LinearLayout>
@@ -57,16 +59,17 @@
                             android:textStyle="bold"
                             android:textSize="24sp"
                             android:text="Top Seller"
-                            android:layout_margin="7dp"/>
+                            android:layout_margin="7dp"
+                            android:textColor="@color/black"/>
 
-                        <Button
+                        <ImageButton
                             android:id="@+id/topsellermore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
                             android:layout_marginEnd="10dp"
                             android:layout_margin="7dp"
-                            android:text="see more"
-                            android:gravity="right"
+                            android:background="#ffffff"
+                            android:src="@drawable/ic_baseline_arrow_forward_24"
                             />
 
                 </LinearLayout>
@@ -87,16 +90,17 @@
                             android:textStyle="bold"
                             android:textSize="24sp"
                             android:text="Amazing Reads"
-                            android:layout_margin="7dp"/>
+                            android:layout_margin="7dp"
+                            android:textColor="@color/black"/>
 
-                        <Button
+                        <ImageButton
                             android:id="@+id/amazingmore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
                             android:layout_marginEnd="10dp"
                             android:layout_margin="7dp"
-                            android:text="see more"
-                            android:gravity="right"
+                            android:src="@drawable/ic_baseline_arrow_forward_24"
+                            android:background="#ffffff"
                             />
 
                 </LinearLayout>
@@ -117,16 +121,17 @@
                             android:textStyle="bold"
                             android:textSize="24sp"
                             android:text="Recommended"
-                            android:layout_margin="7dp"/>
+                            android:layout_margin="7dp"
+                            android:textColor="@color/black"/>
 
-                        <Button
+                        <ImageButton
                             android:id="@+id/recommendedmore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="31dp"
+                            android:layout_height="31dp"
                             android:layout_marginEnd="10dp"
                             android:layout_margin="7dp"
-                            android:text="see more"
-                            android:gravity="right"
+                            android:src="@drawable/ic_baseline_arrow_forward_24"
+                            android:background="#ffffff"
                             />
 
                 </LinearLayout>
